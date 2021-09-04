@@ -1,8 +1,33 @@
 <template>
-  <div id="pages_chat">
-    Chat Page
+  <div id="pages__chat" class="py-0 py-sm-6">
+    <v-row align="center" justify="center" no-gutters>
+      <v-col cols="12" sm="8">
+        <v-card>
+          <div class="chat__head">
+            <v-card-title class="justify-center pb-2">
+              Fun Group Chat
+            </v-card-title>
 
-    <v-btn @click="logout">Logout</v-btn>
+            <p class="text-truncate text-center mb-0">
+              {{ userEmail }}
+            </p>
+
+            <div class="pa-4 text-center">
+              <v-btn @click="logout" depressed rounded small>
+                <v-icon left>mdi-logout</v-icon>
+                Logout
+              </v-btn>
+            </div>
+
+            <v-divider />
+          </div>
+
+          <pages-chat-message-list />
+
+          <pages-chat-message-form class="mt-3" />
+        </v-card>
+      </v-col>
+    </v-row>
   </div>
 </template>
 
@@ -12,6 +37,11 @@ import Vue from "vue";
 export default Vue.extend({
   name: "PageChat",
   middleware: ["auth"],
+  computed: {
+    userEmail() {
+      return this.$store.state.authUser.email || "Anonymous User";
+    },
+  },
   methods: {
     async logout() {
       try {
@@ -23,3 +53,15 @@ export default Vue.extend({
   },
 });
 </script>
+
+<style lang="scss" scoped>
+#pages__chat {
+  .chat__head {
+    background-color: #fff;
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 5;
+  }
+}
+</style>

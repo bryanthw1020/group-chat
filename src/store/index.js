@@ -1,3 +1,5 @@
+import firebase from "firebase/app";
+
 export const state = () => ({
   authUser: null
 });
@@ -47,8 +49,7 @@ export const actions = {
 
     if (authUser && authUser.getIdToken) {
       try {
-        const idToken = await authUser.getIdToken(true);
-        // console.info("idToken", idToken);
+        await authUser.getIdToken(true);
 
         this.$router.push("chat");
       } catch (e) {

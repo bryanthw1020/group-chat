@@ -26,8 +26,10 @@
     "types": [
       "@nuxt/types",
       "@nuxtjs/axios",
+      "@nuxtjs/firebase",
+      "@nuxtjs/moment",
+      "@nuxtjs/vuetify",
       "@types/node",
-      "@nuxtjs/firebase"
     ]
   },
   "exclude": [
