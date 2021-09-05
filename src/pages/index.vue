@@ -2,7 +2,7 @@
   <div id="pages__index" class="text-center pa-4">
     <h1 class="mb-6">Welcome</h1>
 
-    <pages-index-auth-form class="pb-2" />
+    <pages-index-auth-form />
   </div>
 </template>
 

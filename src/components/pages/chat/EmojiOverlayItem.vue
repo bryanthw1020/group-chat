@@ -46,7 +46,7 @@ export default Vue.extend({
         return this.index * 100;
       },
       autoplay: true,
-      easing: "easeInOutSine",
+      easing: "easeInSine",
     });
   },
 });
