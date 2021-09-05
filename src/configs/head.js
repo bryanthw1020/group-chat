@@ -1,6 +1,5 @@
-const title = "Fun Group Chat";
-const description =
-  "A simple fun group chat app built with Firebase, NuxtJs and Vuetify.";
+const title = process.env.APP_NAME;
+const description = process.env.APP_DESCRIPTION;
 
 export default {
   titleTemplate: "%s - Fun Group Chat",

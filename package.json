@@ -1,5 +1,9 @@
 {
   "name": "group-chat",
+  "author": {
+    "name": "Bryan Tan",
+    "email": "bryantanhw@gmail.com"
+  },
   "version": "1.0.0",
   "private": true,
   "scripts": {
