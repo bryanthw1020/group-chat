@@ -1,6 +1,17 @@
+const appName = process.env.APP_NAME;
+const appShortName = process.env.APP_SHORT_NAME;
+const appDescription = process.env.APP_DESCRIPTION;
+
 export default {
   manifest: {
+    name: appName,
+    short_name: appShortName,
+    description: appDescription,
     lang: "en"
+  },
+  meta: {
+    name: appName,
+    description: appDescription
   },
   workbox: {
     importScripts: ["/firebase-auth-sw.js"],
