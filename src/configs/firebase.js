@@ -16,6 +16,7 @@ export default {
       ssr: true
     },
     analytics: true,
+    database: true,
     firestore: true
   }
 };

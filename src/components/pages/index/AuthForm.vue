@@ -45,7 +45,7 @@ export default Vue.extend({
   name: "ComponentAuthForm",
   data() {
     return {
-      loading: false as Boolean,
+      loading: false as boolean,
       currentAction: "login" as string,
       errorMessage: "" as string | null,
       formData: {

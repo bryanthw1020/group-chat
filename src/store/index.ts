@@ -1,18 +1,22 @@
+import { ActionTree, GetterTree, MutationTree } from "vuex";
+
 export const state = () => ({
-  authUser: null
+  authUser: null as any
 });
 
-export const getters = {
+export type RootState = ReturnType<typeof state>;
+
+export const getters: GetterTree<RootState, RootState> = {
   isLoggedIn: state => {
     try {
-      return state.authUser.uid !== null;
+      return state.authUser && state.authUser.uid !== null;
     } catch {
       return false;
     }
   }
 };
 
-export const mutations = {
+export const mutations: MutationTree<RootState> = {
   RESET_STORE: state => {
     state.authUser = null;
   },
@@ -25,7 +29,7 @@ export const mutations = {
   }
 };
 
-export const actions = {
+export const actions: ActionTree<RootState, RootState> = {
   async nuxtServerInit({ dispatch }, ctx) {
     if (ctx.res && ctx.res.locals && ctx.res.locals.user) {
       const { allClaims: claims, ...authUser } = ctx.res.locals.user;
@@ -47,8 +51,7 @@ export const actions = {
 
     if (authUser && authUser.getIdToken) {
       try {
-        const idToken = await authUser.getIdToken(true);
-        // console.info("idToken", idToken);
+        await authUser.getIdToken(true);
 
         this.$router.push("chat");
       } catch (e) {
