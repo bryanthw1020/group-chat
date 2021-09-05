@@ -24,7 +24,9 @@
 
           <pages-chat-message-list />
 
-          <pages-chat-message-form class="mt-3" />
+          <pages-chat-emoji-overlay />
+
+          <pages-chat-message-form />
         </v-card>
       </v-col>
     </v-row>

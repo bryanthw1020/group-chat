@@ -4,6 +4,7 @@
     <v-text-field
       v-model="formData.message"
       placeholder="Enter your message"
+      autocomplete="off"
       hide-details="auto"
       append-icon="mdi-send"
       :disabled="loading"

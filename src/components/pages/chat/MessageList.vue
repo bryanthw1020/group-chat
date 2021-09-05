@@ -10,38 +10,15 @@
 
 <script lang="ts">
 import Vue from "vue";
+import { mapState } from "vuex";
 
 export default Vue.extend({
   name: "ComponentMessageList",
-  data() {
-    return {
-      messages: [] as Array<any>,
-    };
-  },
-  methods: {
-    listenForNewMessages() {
-      this.$fire.firestore
-        .collection("messages")
-        .orderBy("createdAt", "desc")
-        .onSnapshot(
-          (querySnapshot) => {
-            this.messages = [];
-
-            querySnapshot.forEach((message) => {
-              this.messages.push({
-                uid: message.id,
-                ...message.data(),
-              });
-            });
-          },
-          (error) => {
-            console.log(error);
-          }
-        );
-    },
+  computed: {
+    ...mapState("chat", ["messages"]),
   },
   mounted() {
-    this.listenForNewMessages();
+    this.$store.dispatch("chat/listenForNewMessages");
   },
   updated() {
     this.$nextTick(() => {
@@ -53,6 +30,7 @@ export default Vue.extend({
 
 <style lang="scss" scoped>
 .components__messageList {
+  position: relative;
   display: flex;
   flex-direction: column-reverse;
   min-height: 100vh;
