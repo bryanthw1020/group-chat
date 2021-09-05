@@ -39,6 +39,11 @@ import Vue from "vue";
 export default Vue.extend({
   name: "PageChat",
   middleware: ["auth"],
+  head() {
+    return {
+      title: "Chat",
+    };
+  },
   computed: {
     userEmail() {
       return this.$store.state.authUser.email || "Anonymous User";

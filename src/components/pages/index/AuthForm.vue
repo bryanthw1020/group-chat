@@ -22,12 +22,14 @@
 
     <v-divider class="my-4" />
 
-    <p v-if="currentAction === 'register'">
-      Already have an account? <a @click="switchAction('login')">Login</a>
-    </p>
-    <p v-else-if="currentAction === 'login'">
-      Do not have an account?
-      <a @click="switchAction('register')">Register an account</a>
+    <p class="mb-0">
+      <template v-if="currentAction === 'register'">
+        Already have an account? <a @click="switchAction('login')">Login</a>
+      </template>
+      <template v-else-if="currentAction === 'login'">
+        Do not have an account?
+        <a @click="switchAction('register')">Register an account</a>
+      </template>
     </p>
   </div>
 </template>
